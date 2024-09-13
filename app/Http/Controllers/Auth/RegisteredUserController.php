@@ -42,13 +42,12 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-if ($request->user_role === 'admin'){
-    $user->assignRole('admin');
-}
-else{
-    $user->assignRole('user');
-}
-
+        if ($request->user_role === 'admin') {
+            $user->assignRole('admin');
+        }
+        else {
+            $user->assignRole('user');
+        }
 
         return redirect(route('login', absolute: false));
     }
